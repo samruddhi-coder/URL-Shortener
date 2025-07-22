@@ -5,12 +5,14 @@ import { config } from "dotenv";
 //.env setup
 config({ path: ".env" });
 const port = process.env.PORT;
+const baseurl = process.env.BASEURL;
+
 export const shortURL = async (req, res) => {
   const mainurl = req.body.mainurl;
   const shortCode = shortid.generate();
 
-  const shortURL = `http://localhost:${port}/${shortCode}`;
-
+  //const shortURL = `http://localhost:${port}/${shortCode}`;
+  const shortURL = `${baseurl}/shortURL/${shortCode}`;
   //save to DB
   const newUrl = new Url({ shortCode, mainurl });
   await newUrl.save();
