@@ -12,7 +12,7 @@ export const shortURL = async (req, res) => {
   const shortCode = shortid.generate();
 
   //const shortURL = `http://localhost:${port}/${shortCode}`;
-  const shortURL = `${baseurl}/shortURL/${shortCode}`;
+  const shortURL = `${baseurl}/${shortCode}`;
   //save to DB
   const newUrl = new Url({ shortCode, mainurl });
   await newUrl.save();
