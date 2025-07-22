@@ -30,8 +30,3 @@ app.post("/short", shortURL);
 app.get("/:codeshowrt", getOriginalUrl);
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server running on port ${port}`));
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// 📁 Serve 'image' folder statically
-app.use("./image", express.static(path.join(__dirname, "image")));
