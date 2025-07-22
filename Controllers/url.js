@@ -1,11 +1,15 @@
 import { Url } from "../Models/Url.js";
-
 import shortid from "shortid";
+import { config } from "dotenv";
+
+//.env setup
+config({ path: ".env" });
+const port = process.env.PORT;
 export const shortURL = async (req, res) => {
   const mainurl = req.body.mainurl;
   const shortCode = shortid.generate();
 
-  const shortURL = `http://localhost:1000/${shortCode}`;
+  const shortURL = `http://localhost:${port}/${shortCode}`;
 
   //save to DB
   const newUrl = new Url({ shortCode, mainurl });
